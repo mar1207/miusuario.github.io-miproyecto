@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Reforestación - Galería</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Estilos para el carrusel de imágenes */
+        .carousel-container {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            z-index: 10;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo-blog.png" alt="Logo del Blog" class="logo-blog">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="articulos.html">Artículos</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="beneficios.html">Beneficios</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+    <section id="galeria">
+        <h2>Galería de Imágenes</h2>
+        <p>A continuación, te mostramos algunas imágenes de nuestros proyectos de reforestación.</p>
+
+        <!-- Carrusel de imágenes -->
+        <div class="carousel-container">
+            <div class="carousel-images">
+                <img src="img1.jpg" alt="Reforestación 1">
+                <img src="img2.jpg" alt="Reforestación 2">
+                <img src="img3.jpg" alt="Reforestación 3">
+                <img src="img4.jpg" alt="Reforestación 4">
+                <img src="img5.jpg" alt="Reforestación 5">
+            </div>
+
+            <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+</main>
+    <footer>
+        <p>&copy; 2025 Blog de Reforestación</p>
+        <p>Colegio de Bachilleres del Estado de México - Plantel 40 Ixtlahuaca</p>
+        <p>Autor: Grupo 604</p>
+    </footer>
+
+    <script>
+        // Función para mover el carrusel de imágenes
+        let index = 0;
+        const slides = document.querySelectorAll('.carousel-images img');
+        const totalSlides = slides.length;
+
+        function moveSlide(direction) {
+            index += direction;
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+
+            const newTransformValue = -index * 100; // Mueve las imágenes
+            document.querySelector('.carousel-images').style.transform = `translateX(${newTransformValue}%)`;
+        }
+    </script>
+</body>
+</html>
